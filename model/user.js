@@ -23,6 +23,8 @@ var userSchema = new Schema({
 
 userSchema.methods.saveAddedToCartProduct = function (productID, qty, cb) {
     try {
+        console.log('saveAddedToCartProduct called with', productID, qty);
+
         // Check if product already exists in cart and if it does just increment quantity and check if was added during a control group
         var existingProductInCart = _.find(this.cart.products, {
             id: productID
