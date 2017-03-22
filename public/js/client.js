@@ -81,7 +81,7 @@ function setNotificationDefaults() {
 
         template: '<div class="wiijet-notification"><span class="noty_text"></span><div class="noty_close"></div></div>',
 
-        timeout: false, // [integer|boolean] delay for closing event in milliseconds. Set false for sticky notifications
+        timeout: 4000, // [integer|boolean] delay for closing event in milliseconds. Set false for sticky notifications
         progressBar: false, // [boolean] - displays a progress bar
 
         animation: {
@@ -312,24 +312,13 @@ function wiselyReflectDataToUser(notificationData) {
     if (isProductPage() && notificationData.type !== undefined) {
         switch (notificationData.type) {
             case wiijetConsts.NOTIFICATION_TYPE.ACTIVE_VIEWS:
-                createPageViewsCounterNotification(notificationHTML);
+                createNotification(notificationHTML);
                 break;
             case wiijetConsts.NOTIFICATION_TYPE.LAST_PURCHASES:
+                createNotification(notificationHTML);
                 break;
         }
     }
-    // else if (isProductsCategoryPage()) {
-    //     if (data.bestSellerPageHref) {
-    //         var bestSellerProductDOMElement = jQuery('*[href=' + data.bestSellerPageHref);
-
-    //         if (bestSellerProductDOMElement) {
-    //             bestSellerProductDOMElement.closest('li').innerHTML.prepend('<div class="wiijet-hint" style=" position: absolute; border-color: lightgreen; border-width: 1px; border-style: solid; width: 100%; top: 0; right: 0; ">המוצר הנמכר ביותר בקטגוריה זו!</div>');
-    //         }
-    //     }
-    // } else {
-    //     // Could be login, settings, checkout, etc.
-    //     // show 'smart choice' notification, to strengthen user confidence about purchasing this product
-    // }
 }
 
 function getStatisticsForPage(data) {
@@ -443,103 +432,9 @@ function injectWiijetJSResources() {
     }
 }
 
-function createPageViewsCounterNotification(contentHTML) {
+function createNotification(contentHTML) {
     var liveWatchersNotification = noty({
         text: contentHTML
-    });
-
-    // jQuery.notify({
-    //     // options
-    //     icon: 'glyphicon glyphicons-eye-open',
-    //     /* title: 'Highly watched product!', */
-    //     message: liveWatchersCount + ' אנשים צופים כרגע במוצר זה',
-    //     // url: 'https://github.com/mouse0270/bootstrap-notify',
-    //     // target: '_blank'
-    // }, {
-    //     // settings
-    //     element: 'body',
-    //     position: null,
-    //     type: "info",
-    //     allow_dismiss: true,
-    //     newest_on_top: false,
-    //     showProgressbar: false,
-    //     placement: {
-    //         from: "bottom",
-    //         align: "right"
-    //     },
-    //     offset: {
-    //         x: 5,
-    //         y: wiijetNotificationYOffset
-    //     },
-    //     spacing: 10,
-    //     z_index: 1031,
-    //     delay: 4000,
-    //     timer: 1000,
-    //     // url_target: '_blank',
-    //     mouse_over: 'pause',
-    //     animate: {
-    //         enter: 'animated fadeInRightBig',
-    //         exit: 'animated fadeOut'
-    //     },
-    //     onShow: null,
-    //     onShown: null,
-    //     onClose: null,
-    //     onClosed: null,
-    //     icon_type: 'class',
-    //     template: '<div data-notify="container" class="col-xs-10 col-sm-2 wiijet-notification" role="alert">' +
-    //         /*'<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +*/
-    //         '<span data-notify="icon"></span> ' +
-    //         '<span data-notify="title">{1}</span> ' +
-    //         '<span data-notify="message">{2}</span>' +
-    //         '</div>'
-    // });
-}
-
-function createPurchaseStatisticsNotification(lastPurchasesCount) {
-    jQuery.notify({
-        // options
-        icon: 'glyphicon glyphicons-fire',
-        title: 'Hot product',
-        message: lastPurchasesCount + ' people have purchaed this product in the last hour',
-        // url: 'https://github.com/mouse0270/bootstrap-notify',
-        // target: '_blank'
-    }, {
-        // settings
-        element: 'body',
-        position: null,
-        type: "info",
-        allow_dismiss: true,
-        newest_on_top: false,
-        showProgressbar: false,
-        placement: {
-            from: "bottom",
-            align: "right"
-        },
-        offset: {
-            x: 5,
-            y: wiijetNotificationYOffset
-        },
-        spacing: 10,
-        z_index: 1031,
-        delay: 4000,
-        timer: 1000,
-        // url_target: '_blank',
-        mouse_over: 'pause',
-        animate: {
-            enter: 'animated fadeInRightBig',
-            exit: 'animated fadeOut'
-        },
-        onShow: null,
-        onShown: null,
-        onClose: null,
-        onClosed: null,
-        icon_type: 'class',
-        template: '<div data-notify="container" class="col-xs-11 col-sm-3 wiijet-notification" role="alert">' +
-            '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
-            '<span data-notify="icon"></span> ' +
-            '<span data-notify="title">{1}</span> ' +
-            '<span data-notify="message">{2}</span>' +
-            '</div>'
     });
 }
 
