@@ -1,0 +1,44 @@
+{
+    "FORMATS": {
+        "VIEWS": {
+            "ACTIVE": {
+                "en_US": "%d users are currently viewing this product",
+                "en": "%d users are currently viewing this product",
+                "he_IL": "%d משתמשים צופים כרגע במוצר זה",
+                "he": "%d משתמשים צופים כרגע במוצר זה"
+            }
+        },
+        "PURCHASES": {
+            "LAST": {
+                "en_US": "%d users purchased this product just now",
+                "en": "%d users purchased this product just now",
+                "he_IL": "%d משתמשים רכשו מוצר זה עכשיו",
+                "he": "%d משתמשים רכשו מוצר זה עכשיו"
+            },
+            "LAST_HOUR": {
+                "en_US": "%d users purchased this product in the last hour",
+                "en": "%d users purchased this product in the last hour",
+                "he_IL": "%d משתמשים רכשו מוצר זה בשעה האחרונה",
+                "he": "%d משתמשים רכשו מוצר זה בשעה האחרונה"
+            },
+            "LAST_3_HOURS": {
+                "en_US": "this product was purchased %d hours ago",
+                "en": "this product was purchased %d hours ago",
+                "he_IL": "מוצר זה נרכש לפני %d שעות",
+                "he": "מוצר זה נרכש לפני %d שעות",
+                "ONE_HOUR_AGO": {
+                    "en_US": "this product was purchased an hour ago",
+                    "en": "this product was purchased an hour ago",
+                    "he_IL": "מוצר זה נרכש לפני שעה",
+                    "he": "מוצר זה נרכש לפני שעה"
+                }
+            },
+            "TODAY": {
+                "en_US": "%d users purchased this product today",
+                "en": "%d users purchased this product today",
+                "he_IL": "%d משתמשים רכשו מוצר זה היום",
+                "he": "%d משתמשים רכשו מוצר זה היום"
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "CONSTS": {
+        "SUPPORTED_LOCALES": ["en", "en_US", "he", "he_IL"],
+        "PAGE_TYPE": {
+            "PRODUCT": 0,
+            "CATEGORY": 1,
+            "UNSUPPORTED": 2
+        },
+        "EVENT_TYPE": {
+            "PAGE_VIEW": 0,
+            "ADD_TO_CART": 1,
+            "PURCHASE": 2
+        },
+        "NOTIFICATION_TYPE": {
+            "ACTIVE_VIEWS": 0,
+            "LAST_PURCHASES": 1,
+            "SMART_BUY": 2,
+            "BEST_PRICE": 3,
+            "BEST_SELLER": 4,
+            "MOST_VIEWED": 5
+        },
+        "FORMULAS": {
+            "WEIGHTS": {
+                "VIEWS": {
+                    "ACTIVE": 10
+                },
+                "PURCHASES": {
+                    "LAST": 30,
+                    "LAST_HOUR": 15,
+                    "LAST_3_HOURS": 10,
+                    "TODAY": 3
+                }
+            },
+            "TIME_FRAMES_IN_SECONDS": {
+                "VIEWS": {
+                    "ACTIVE": 300
+                },
+                "PURCHASES": {
+                    "LAST": 300,
+                    "LAST_HOUR": 3600,
+                    "LAST_3_HOURS": 10800,
+                    "TODAY": 86400
+                }
+            },
+            "MIN_VIEWS_COUNT_TO_SHOW": 2
+        },
+        "CONTROL_GROUP": {
+            "PERCENTAGE_OF_USERS_IN_CONTROL_GROUP": 50
+        }
+    }
+}
