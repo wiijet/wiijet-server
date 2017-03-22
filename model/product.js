@@ -270,15 +270,17 @@ productSchema.methods.getTodaysPurchasesCount = function (cb) {
 };
 
 productSchema.methods.updateAddedToCartCounter = function (quantity, referringUser, cb) {
+    var self = this;
+
     try {
-        referringUser.inControlGroup ? this.wiijetAddedToCartCounter++ : this.nonWiijetAddedToCartCounter++;
+        referringUser.inControlGroup ? self.wiijetAddedToCartCounter++ : self.nonWiijetAddedToCartCounter++;
 
         this.save(function (err, savedProduct) {
             if (err) {
                 cb(err);
             }
 
-            referringUser.saveAddedToCartProduct(this.id, quantity, function (err, updatedUser) {
+            referringUser.saveAddedToCartProduct(self.id, quantity, function (err, updatedUser) {
                 if (err) {
                     cb(err);
                 }
