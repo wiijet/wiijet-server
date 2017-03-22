@@ -278,7 +278,7 @@ productSchema.methods.updateAddedToCartCounter = function (quantity, referringUs
                 cb(err);
             }
 
-            referringUser.saveAddedToCartProduct(self.id, quantity, function (err, updatedUser) {
+            referringUser.saveAddedToCartProduct(this.id, quantity, function (err, updatedUser) {
                 if (err) {
                     cb(err);
                 }
