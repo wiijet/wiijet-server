@@ -21,19 +21,19 @@ var userSchema = new Schema({
     }
 });
 
-userSchema.methods.saveAddedToCartProduct = function (product, qty, cb) {
+userSchema.methods.saveAddedToCartProduct = function (productID, qty, cb) {
     try {
         // Check if product already exists in cart and if it does just increment quantity and check if was added during a control group
         var existingProductInCart = _.find(this.cart.products, {
-            id: product.id
+            id: productID
         });
 
         if (existingProductInCart) {
-            existingProductInCart.quantity++;
+            existingProductInCart.quantity = existingProductInCart.quantity + (qty || 1);
             existingProductInCart.wasAddedDuringControlGroup = existingProductInCart.wasAddedDuringControlGroup || this.inControlGroup;
         } else {
             this.cart.products.push({
-                id: product.id,
+                id: productID,
                 quantity: qty,
                 wasAddedDuringControlGroup: this.inControlGroup
             });

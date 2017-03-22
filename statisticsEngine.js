@@ -38,30 +38,31 @@ function pageViewEventHandler(data, cb) {
     }
 }
 
-// function addToCartEventHandler(data, cb) {
-//     var product = data.product,
-//         referringUser = data.referringUser;
+function addToCartEventHandler(data, cb) {
+    var product = data.product,
+        qty = data.quantity,
+        referringUser = data.referringUser;
 
-//     try {
-//         return getStatsForAddedToCartProduct(referringUser, product, cb);
-//     } catch (e) {
-//         return cb(e);
-//     }
+    try {
+        return getStatsForAddedToCartProduct(qty, referringUser, product, cb);
+    } catch (e) {
+        return cb(e);
+    }
 
-//     function getStatsForAddedToCartProduct(referringUser, product, cb) {
-//         try {
-//             product.incrementAddedToCartCountersByOne(referringUser, function(err, updatedProduct) {
-//                 if (err) {
-//                     throw err;
-//                 }
+    function getStatsForAddedToCartProduct(qty, referringUser, product, cb) {
+        try {
+            product.updateAddedToCartCounter(qty, referringUser, function (err, updatedProduct) {
+                if (err) {
+                    throw err;
+                }
 
-//                 return cb();
-//             });
-//         } catch (e) {
-//             return cb(e);
-//         }
-//     }
-// }
+                return cb();
+            });
+        } catch (e) {
+            return cb(e);
+        }
+    }
+}
 
 // function purchaseEventHandler(data, cb) {
 //     var productIDs = data.purchasedProductURLs,

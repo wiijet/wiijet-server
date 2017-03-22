@@ -269,27 +269,27 @@ productSchema.methods.getTodaysPurchasesCount = function (cb) {
     }
 };
 
-// productSchema.methods.incrementAddToCartCountersByOne = function(involvedUser, cb) {
-//     try {
-//         involvedUser.inControlGroup ? this.wiijetAddedToCartCounter++ : this.nonWiijetAddedToCartCounter++;
+productSchema.methods.updateAddedToCartCounter = function (quantity, referringUser, cb) {
+    try {
+        referringUser.inControlGroup ? this.wiijetAddedToCartCounter++ : this.nonWiijetAddedToCartCounter++;
 
-//         this.save(function(err, savedProduct) {
-//             if (err) {
-//                 cb(err);
-//             }
+        this.save(function (err, savedProduct) {
+            if (err) {
+                cb(err);
+            }
 
-//             involvedUser.saveAddedToCartProduct(function(err, updatedUser) {
-//                 if (err) {
-//                     cb(err);
-//                 }
+            referringUser.saveAddedToCartProduct(self.id, quantity, function (err, updatedUser) {
+                if (err) {
+                    cb(err);
+                }
 
-//                 cb(null, savedProduct);
-//             });
-//         });
-//     } catch (e) {
-//         cb(e);
-//     }
-// };
+                cb(null, savedProduct);
+            });
+        });
+    } catch (e) {
+        cb(e);
+    }
+};
 
 // productSchema.methods.incrementPurchaseCountersByOne = function(involvedUser, cb) {
 //     try {
